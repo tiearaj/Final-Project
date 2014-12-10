@@ -47,7 +47,7 @@ float: left;
 width: 20%;
 }
 nav ul {
-margin: 100px 0px 75px;
+margin: 100px 0px 45px;
 }
 nav ul li {
 text-decoration: none;
@@ -63,9 +63,16 @@ text-decoration: none;
 color: #fff;
 
 }
+nav p {
+color: #fff;
+margin: 30px 10px 0px;
+font-family: Poiret One;
+font-size:20px;
+}
 #social {
 margin: 0 auto;
 }
+
 .social {
 margin-right: 15px;
 }
