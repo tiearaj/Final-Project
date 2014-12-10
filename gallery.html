@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Aspire Studios Photography</title>
+<link rel="stylesheet" type="text/css" href="global.css">
+<link rel="stylesheet" type="text/css" href="flexslider.css">
+<link href='http://fonts.googleapis.com/css?family=Questrial|Poiret+One|Alex+Brush' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="css/jquery.classysocial.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="js/jquery.classysocial.js"></script>
+<script type="text/javascript" src="js/instafeed.min.js"></script>
+<script type="text/javascript" src="js/api.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" charset="utf-8">
+  $(window).load(function() {
+    $('.flexslider').flexslider();
+	$('.classysocial').ClassySocial();
+  });
+</script>
+</head>
+<body>
+<div class="container">
+	<header>
+	<div id="logo"><h1>Aspire Studios, Inc.</h1></div>
+	</header>
+	<div class="clear"></div>
+		<nav>
+			<ul>
+				<li>
+					<a href="index.html">Home</a>
+				</li>
+				<li>
+					<a href="#">Gallery</a>
+				</li>
+				<li>
+					<a href="services.html">Services</a>
+				</li>
+				<li>
+					<a href="about.html">About</a>
+				</li>
+				<li>
+					<a href="contact.html">Contact</a>
+				</li>
+			</ul>
+			<div id="social">
+			<div class="classysocial"
+				data-arc-length="180"
+				data-image-type="facebook"
+				data-picture="picozu"
+				data-facebook-handle="picozu"
+				data-github-handle="mortadella"
+				data-twitter-handle="picozu_editor"
+				data-pinterest-handle="picozu_editor"
+				data-instagram-handle="picozu_editor"
+				data-orientation="arc"
+				data-radius="90"
+				data-networks="facebook,twitter,pinterest,instagram">
+			</div>
+				<!-- <img class="social" src="images/facebook.gif">
+				<img class="social" src="images/instagram.gif">
+				<img class="social" src="images/pinterest.gif">
+				<img class="social" src="images/twitter.gif"> -->
+			</div>
+		</nav>
+
+	<div id="content">
+		<div id="gallery">	
+		<h2>Gallery</h2>
+		<div class="gallery"></div>
+		<div class="thumb-gallery"></div>
+
+		<script type="text/javascript">
+			var feed = new Instafeed({
+				get: 'tagged',
+				tagName: 'wedding'+'photography',
+				clientId: 'ddfb811a349348949bf4b2c9eeacecd7',
+				success: function(response) {
+								for(var c = 0; c < response.data.length; c++) {
+									var image = response.data[c].images.standard_resolution.url,
+										thumb = response.data[c].images.thumbnail.url,
+										id = response.data[c].id,
+										li = '<li><img class="'+id+' fullsize" src="'+image+'"/></li>',
+										thumbLi = '<li><img id="'+id+'" class= "thumbsize" src="'+thumb+'"/></li>';
+									$('.gallery').append(li);
+									$('.thumb-gallery').append(thumbLi);
+									$('.thumbsize').on('click', function() {
+										var thumbId = $(this).attr('id');
+										$('.'+ thumbId).show();
+									});
+									$('.fullsize').on('click', function () {
+									$(this).hide();
+								   });
+									
+								}
+							   
+							}
+						});
+						feed.run();
+
+		</script>
+		</div>
+	</div>
+</div>
+<div class="clear"></div>
+	<footer>
+		<li class="info">&copy Aspire Studio 2014</li>
+		<li class="info">aspirestudios@aspire.com</li>
+		<li class="info">215-946-9822</li>
+		<li class="info">14th & Market St, Philadelphia, PA 19097</li>			
+	</footer>
+
+</body>
+</html>
