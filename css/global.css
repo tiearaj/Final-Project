@@ -355,6 +355,7 @@ display: inline;
 }
 .thumb-gallery li img {
 margin: 15px;
+cursor:pointer;
 }
 
 li {
